@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Minimum_Starting_Balance__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Minimum Starting Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Savings Minor Account</fullName>
+                    <default>true</default>
+                    <label>Savings Minor Account</label>
+                </value>
+                <value>
+                    <fullName>Current Account</fullName>
+                    <default>false</default>
+                    <label>Current Account</label>
+                </value>
+                <value>
+                    <fullName>Savings Account</fullName>
+                    <default>false</default>
+                    <label>Savings Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Account Record Type</label>
+    <pluralLabel>Account Record Types</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

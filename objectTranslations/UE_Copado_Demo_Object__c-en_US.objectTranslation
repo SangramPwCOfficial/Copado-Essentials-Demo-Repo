@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UE Copado Demo Object</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UE Copado Demo Objects</value>
+    </caseValues>
+    <fields>
+        <label><!-- UE Copado Demo Field One --></label>
+        <name>UE_Copado_Demo_Field_One__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

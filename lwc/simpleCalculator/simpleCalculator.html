@@ -1,0 +1,72 @@
+<!--
+  @description       : 
+  @author            : Sangram Keshari Upadhyaya
+  @group             : 
+  @last modified on  : 04-04-2024
+  @last modified by  : Sangram Keshari Upadhyaya
+  Modifications Log
+  Ver   Date         Author                      Modification
+  1.0   04-02-2024   Sangram Keshari Upadhyaya   Initial Version
+-->
+
+<!--
+
+*   Here we are using lightning base components only
+*   The base components that are beign used here are as follows:
+*       - lightning-card
+*       - lightning-layout
+*       - lightning-layout-item
+*       - lightning-button-group
+*       - lightning-button
+*       - lightning-input
+*       - lightning-input-number
+*       - lightning-formatted-number
+*       - lightning-button-icon
+
+-->
+<template>
+    <lightning-card title="Simple Calulator" icon-name="standard:formula">
+        <lightning-layout multiple-rows>
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-input type="number" name="firstNumber" placeholder="Enter a number" onchange={numberChangeHandler}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-input type="number" name="secondNumber" placeholder="Enter a number" onchange={numberChangeHandler}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-button-group>
+                    <lightning-button label="Add" icon-name="utility:add" icon-position="right" onclick={handleAdd}></lightning-button>
+                    <lightning-button label="Subtract" icon-name="utility:dash" icon-position="right" onclick={handleSubtract}></lightning-button>
+                    <lightning-button label="Multiply" icon-name="utility:close" icon-position="right" onclick={handleMultiply}></lightning-button>
+                    <lightning-button label="Divide" icon-name="utility:percent" icon-position="right" onclick={handleDivision}></lightning-button>
+                    <lightning-button-icon icon-name="utility:refresh" icon-class="reset" variant="border-filled" alternative-text="Reset" onclick={handleReset}></lightning-button-icon>
+                </lightning-button-group>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-formatted-text value={currentResult}></lightning-formatted-text>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-medium">
+                <template lwc:if={showHistory}>
+                    <lightning-button label="Hide History" variant="Brand" onclick={handleHistoryCmp}></lightning-button>
+                    <div class="slds-m-top_medium">
+                        <template for:each={historyList} for:item="historyItem">
+                            <div key={historyItem}>
+                                <lightning-formatted-text value={historyItem}></lightning-formatted-text>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <lightning-button label="Show History" variant="Brand" onclick={handleHistoryCmp}></lightning-button>
+                </template>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+</template>

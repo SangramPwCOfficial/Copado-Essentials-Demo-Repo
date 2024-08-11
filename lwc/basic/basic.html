@@ -1,0 +1,83 @@
+<!--
+  @description       : 
+  @author            : Sangram Keshari Upadhyaya
+  @group             : 
+  @last modified on  : 05-29-2024
+  @last modified by  : Sangram Keshari Upadhyaya
+  Modifications Log
+  Ver   Date         Author                      Modification
+  1.0   03-10-2024   Sangram Keshari Upadhyaya   Initial Version
+-->
+
+<!-- To style the whole LwC Component we need to select the :host -->
+<template>
+
+    <lightning-card title="Lightning Card">
+        <div class="background">Hi! I am new to Salesforce LwC</div>
+        <img src = "./basic.svg" alt="Basic"/>
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <p class="slds-var-p-horizontal_small">Card Body</p>
+        <p slot="footer">
+            <lightning-button variant="brand" label="Click me!" title="Save" onclick={handleClick} value="Hey! I am a click" class="slds-var-m-left_x-large"></lightning-button>
+        </p>
+    </lightning-card>
+
+    <lightning-card title="Dynamic Data Binding" style="align-items: center;">
+        <div>{dynamicDataBinding}</div>
+
+        <!-- To send data from HTML to JS, we used event. Here it's an onChange event -->
+        <lightning-input type="text" name="Name" placeholder="Enter your name please" onchange={onClick}></lightning-input>
+        
+        <p>Hello! {dynamicDataBindingFromInput}</p>
+    </lightning-card>
+
+    <lightning-card title="Applying CSS">
+        <div class="styling-by-class">Hello by Class</div>
+        <div style="color: brown; background-color: burlywood; border: 4px solid black">Hello by Inline CSS</div>
+        <div>Hello by Element Tag</div>
+    </lightning-card>
+
+    <lightning-card title="Conditional Rendering">
+        <p lwc:if={divVisibility}>I am a Paragraph Tag</p>
+        <lightning-button variant="brand" label="Show Paragraph" onclick={handleClickForVisibility} lwc:if={showButton}></lightning-button>
+        <lightning-button variant="brand" label="Hide Paragraph" onclick={handleClickForVisibility} lwc:if={hideButton}></lightning-button>
+    </lightning-card>
+
+    <!-- Always make sure to assign a unique value within the key attribute as this is being used by framework to uniquely to identify an element -->
+
+    <lightning-card title="Looping or Iteration">
+        <template for:each={cityNames} for:item='city'>
+            <p key={city}>{city}</p>
+        </template>
+
+        <template for:each={cityWithFamousPlace} for:item="city">
+            <p key={city.Id}>{city.Place} -- {city.Name} -- {city.Role} -- {city.Favorite}</p>
+        </template>
+
+        <p>Below are the examples of Iterator Directive</p>
+
+        <!-- The iterator directive is bit different from for:each directive. -->
+        <!-- It is mandatory to pair a for:item along with for:each directive whereas in Iterator directive its not needed. -->
+        <!-- In iterator:it, the value of current element of the list is stored in the it.value -->
+        <!-- Iterator directive has a few advantages over for:each, like we can directly get the first and last item without looping over the whole list -->
+        <!-- Iterator can be very useful if you want to apply special rendering on our elements dynamically based on their index. It has a few useful properties like, it.first, it.last & it.index -->
+        <template iterator:it={cityNames}>
+            <p key={it.value}>{it.value}</p>
+
+            <!-- Checks whether the current item is first element in the array -->
+            <p key={it.value}>{it.first}</p>
+
+            <!-- Checks whether the current item is last element in the array -->
+            <p key={it.value}>{it.last}</p>
+
+            <!-- It gives the current index of the element -->
+            <p key={it.value}>{it.index}</p>
+        </template>
+
+        <template iterator:it={cityWithFamousPlace}>
+            <p key={it.value.Id}>{it.value.Place} --> {it.value.Name}</p>
+        </template>
+
+    </lightning-card>
+
+</template>

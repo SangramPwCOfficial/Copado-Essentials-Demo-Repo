@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : Sangram Keshari Upadhyaya
+  @group             : 
+  @last modified on  : 04-19-2024
+  @last modified by  : Sangram Keshari Upadhyaya
+  Modifications Log
+  Ver   Date         Author                      Modification
+  1.0   04-19-2024   Sangram Keshari Upadhyaya   Initial Version
+-->
+<template>
+    <lightning-card title="Contact Information" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+           <template for:each={contacts} for:item="contact">
+              <div key={contact.Id}>
+                 {contact.Name}, {contact.Title}
+              </div>
+           </template>
+        </div>
+     </lightning-card>
+</template>
